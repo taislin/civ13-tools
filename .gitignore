@@ -108,3 +108,4 @@ dist
 *.json
 *.dump.txt
 Windows PowerShell.lnk
+*.atom
