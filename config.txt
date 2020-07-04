@@ -1,0 +1,4 @@
+# put the BYOND's version of Civ full path below
+C:\Users\utilizador\Documents\GitHub\1713\civ13
+# put the Typespess' version of Civ full path below
+C:\Users\utilizador\Documents\GitHub\civ13-typespess
