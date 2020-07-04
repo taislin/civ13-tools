@@ -1,12 +1,49 @@
 import os
 import sys
 import shutil
-import time
 
 icon_list = ["/icons/obj/clothing/glasses.dmi","/icons/obj/clothing/belts.dmi","/icons/obj/clothing/gloves.dmi","/icons/obj/clothing/shoes.dmi","/icons/obj/clothing/hats.dmi","/icons/obj/clothing/masks.dmi","/icons/obj/clothing/suits.dmi","/icons/obj/clothing/uniforms.dmi"]
 worn_list = ["/icons/mob/eyes.dmi","/icons/mob/back.dmi","/icons/mob/belt.dmi","/icons/mob/hands.dmi","/icons/mob/feet.dmi","/icons/mob/head.dmi","/icons/mob/mask.dmi","/icons/mob/suit.dmi","/icons/mob/uniform.dmi"]
 path1 = ''
 path2 = ''
+
+component_list = {"glasses":"Glasses","belts":"Belt","shoes":"FootItem","hats":"HeadItem","masks":"MaskItem","suits":"SuitItem","uniforms":"UniformItem"}
+
+def create_obj(objname, otype):
+	component = "Structure"
+	component = component_list[otype]
+	CSONstring = '{}:\n'.format(objname)
+	CSONstring += '	components: ["{}"]\n'.format(component)
+	CSONstring += '	vars:\n'
+	CSONstring += '		components:\n'
+	CSONstring += '			{}:\n'.format(component)
+	CSONstring += '				worn_icon: "icons/mob/worn/{}.png"\n'.format(otype)
+	CSONstring += '				worn_icon_state: "{}"\n'.format(objname)
+	CSONstring += '				can_adjust: false\n'
+	CSONstring += '			Examine:\n'
+	CSONstring += '				desc: ""\n'
+	CSONstring += '		name: "{}"\n'.format(objname.replace("_"," "))
+	CSONstring += '		icon: "icons/mob/under/{}.png"\n'.format(otype)
+	CSONstring += '		icon_state: "{}"\n'.format(objname)
+	CSONstring += '	tree_paths: ["items/clothing/{}/{}"]\n'.format(otype,objname)
+	return CSONstring
+
+def read_metadata(file2edit):
+	lines = open(file2edit).readlines()
+	otype = "structure" # default object type if we can't infer it from the path
+	for i in ["glasses","belts","shoes","hats","masks","suits","uniforms"]:
+		if file2edit.find(i):
+			otype = i
+	fullstring = ""
+	for line in lines:
+		if line.find("state = ") != -1:
+			parsedline = line.split('state = ')
+			objname = parsedline[1].replace('"','').replace("\n","")
+			if (objname != ""):
+				fullstring += create_obj(objname,otype)
+	atom_file = open("atoms/{}.atom".format(otype), "w")
+	atom_file.write(fullstring)
+	atom_file.close()
 
 if (__name__ == "__main__"):
 	masterdir = os.path.normpath(os.getcwd() + os.sep + os.pardir).replace("\\","/")
@@ -45,9 +82,8 @@ if (__name__ == "__main__"):
 	os.chdir(currdir)
 	print("Objects:")
 	for file2object in new_icon_list:
-		time.sleep(5)
 		unipath = file2object
 		print ("	creating objects from {}...".format(unipath))
-		os.system("python obj-parser.py {}".format(unipath))
+		read_metadata(unipath)
 		
 	print("All done. The icon files (.png and .json) are in {} and the object .atom files are in {}.".format(dmi2pngdir+"in",currdir+"/atoms"))
