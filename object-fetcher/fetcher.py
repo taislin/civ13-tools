@@ -1,6 +1,7 @@
 import os
 import sys
 import shutil
+import time
 
 icon_list = ["/icons/obj/clothing/glasses.dmi","/icons/obj/clothing/belts.dmi","/icons/obj/clothing/gloves.dmi","/icons/obj/clothing/shoes.dmi","/icons/obj/clothing/hats.dmi","/icons/obj/clothing/masks.dmi","/icons/obj/clothing/suits.dmi","/icons/obj/clothing/uniforms.dmi"]
 worn_list = ["/icons/mob/eyes.dmi","/icons/mob/back.dmi","/icons/mob/belt.dmi","/icons/mob/hands.dmi","/icons/mob/feet.dmi","/icons/mob/head.dmi","/icons/mob/mask.dmi","/icons/mob/suit.dmi","/icons/mob/uniform.dmi"]
@@ -44,6 +45,7 @@ if (__name__ == "__main__"):
 	os.chdir(currdir)
 	print("Objects:")
 	for file2object in new_icon_list:
+		time.sleep(5)
 		unipath = file2object
 		print ("	creating objects from {}...".format(unipath))
 		os.system("python obj-parser.py {}".format(unipath))

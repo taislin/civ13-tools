@@ -15,14 +15,14 @@ def create_obj(objname, otype):
 	CSONstring += '	vars:\n'
 	CSONstring += '		components:\n'
 	CSONstring += '			{}:\n'.format(component)
-	CSONstring += '				worn_icon: "icons/mob/under/loincloth_worn.png"\n'
-	CSONstring += '				worn_icon_state: "leatherloincloth1"\n'
+	CSONstring += '				worn_icon: "icons/mob/worn/{}.png"\n'.format(otype)
+	CSONstring += '				worn_icon_state: "{}"\n'.format(objname)
 	CSONstring += '				can_adjust: false\n'
 	CSONstring += '			Examine:\n'
 	CSONstring += '				desc: ""\n'
 	CSONstring += '		name: "{}"\n'.format(objname.replace("_"," "))
 	CSONstring += '		icon: "icons/mob/under/{}.png"\n'.format(otype)
-	CSONstring += '		icon_state: "{}\n'.format(objname)
+	CSONstring += '		icon_state: "{}"\n'.format(objname)
 	CSONstring += '	tree_paths: ["items/clothing/{}/{}"]\n'.format(otype,objname)
 	return CSONstring
 
@@ -37,7 +37,8 @@ if (__name__ == "__main__"):
 		if line.find("state = ") != -1:
 			parsedline = line.split('state = ')
 			objname = parsedline[1].replace('"','').replace("\n","")
-			fullstring += create_obj(objname,otype)
+			if (objname != ""):
+				fullstring += create_obj(objname,otype)
 	atom_file = open("atoms/{}.atom".format(otype), "w")
 	atom_file.write(fullstring)
 	atom_file.close()
