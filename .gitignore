@@ -109,3 +109,4 @@ dist
 *.dump.txt
 Windows PowerShell.lnk
 *.atom
+*.txt
