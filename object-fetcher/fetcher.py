@@ -7,7 +7,7 @@ worn_list = ["/icons/mob/eyes.dmi","/icons/mob/back.dmi","/icons/mob/belt.dmi","
 path1 = ''
 path2 = ''
 
-component_list = {"glasses":"Glasses","belts":"Belt","shoes":"FootItem","hats":"HeadItem","masks":"MaskItem","suits":"SuitItem","uniforms":"UniformItem"}
+component_list = {"gloves":"Gloves","glasses":"Glasses","belts":"Belt","shoes":"FootItem","hats":"HeadItem","masks":"MaskItem","suits":"SuitItem","uniforms":"UniformItem"}
 
 def create_obj(objname, otype):
 	component = "Structure"
@@ -31,9 +31,10 @@ def create_obj(objname, otype):
 def read_metadata(file2edit):
 	lines = open(file2edit).readlines()
 	otype = "structure" # default object type if we can't infer it from the path
-	for i in ["glasses","belts","shoes","hats","masks","suits","uniforms"]:
-		if file2edit.find(i):
-			otype = i
+	typesplit = file2edit.split("/out/")[1]
+	typesplit2 = typesplit.split(".dmi.dump.txt")[0]
+	otype = typesplit2
+	print("type is {}".format(otype))
 	fullstring = ""
 	for line in lines:
 		if line.find("state = ") != -1:
