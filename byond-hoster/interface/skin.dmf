@@ -1,0 +1,91 @@
+
+menu "menu"
+	elem 
+		name = "&File"
+		command = ""
+		saved-params = "is-checked"
+	elem 
+		name = "&Quick screenshot\tF2"
+		command = ".screenshot auto"
+		category = "&File"
+		saved-params = "is-checked"
+	elem 
+		name = "&Save screenshot as...\tShift+F2"
+		command = ".screenshot"
+		category = "&File"
+		saved-params = "is-checked"
+	elem 
+		name = ""
+		command = ""
+		category = "&File"
+		saved-params = "is-checked"
+	elem 
+		name = "&Reconnect"
+		command = ".reconnect"
+		category = "&File"
+		saved-params = "is-checked"
+	elem 
+		name = "&Quit"
+		command = ".quit"
+		category = "&File"
+		saved-params = "is-checked"
+	elem 
+		name = "Links"
+		command = ""
+		saved-params = "is-checked"
+	elem 
+		name = "Discord"
+		command = "discord"
+		category = "Links"
+		saved-params = "is-checked"
+	elem 
+		name = "Wiki"
+		command = "wiki"
+		category = "Links"
+		saved-params = "is-checked"
+	elem 
+		name = "Rules"
+		command = "rules"
+		category = "Links"
+		saved-params = "is-checked"
+	elem 
+		name = "Github"
+		command = "github"
+		category = "Links"
+		saved-params = "is-checked"
+	elem 
+		name = "Site"
+		command = "website"
+		category = "Links"
+		saved-params = "is-checked"
+
+
+window "mainwindow"
+	elem "mainwindow"
+		type = MAIN
+		pos = 302,0
+		size = 1600x900
+		anchor1 = none
+		anchor2 = none
+		background-color = #000000
+		is-default = true
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Civilization 13: TypeSpess"
+		statusbar = false
+		image = 'icons\\_LOBBY.dmi'
+		image-mode = center
+		keep-aspect = true
+		menu = "menu"
+		outer-size = 1618x972
+		inner-size = 1600x900
+	elem "browser"
+		type = BROWSER
+		pos = 0,0
+		size = 1600x900
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = #000000
+		is-default = true
+		saved-params = ""
+		show-url = true
+
