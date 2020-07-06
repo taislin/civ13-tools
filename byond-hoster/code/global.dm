@@ -8,5 +8,10 @@ var/global/rules="http://civ13.com/wiki/index.php/Rules"
 
 /world
 	hub = "Exadv1.spacestation13"
-	name = "Civ 13: TypeSpess"
+	name = "Civ 13: TypeSpess (ALPHA)"
 	hub_password = "kMZy3U5jJHSiBQjr"
+	status = "Typespess port of Civ13"
+	New()
+		..()
+		name = "Civ 13: TypeSpess (ALPHA)"
+		status = "Typespess port of Civ13"
