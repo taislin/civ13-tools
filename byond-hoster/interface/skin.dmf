@@ -87,5 +87,4 @@ window "mainwindow"
 		background-color = #000000
 		is-default = true
 		saved-params = ""
-		show-url = true
 
