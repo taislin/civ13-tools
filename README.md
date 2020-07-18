@@ -1,7 +1,10 @@
 # Tools
 Before using the tools, edit the `config.txt` file with your game's folders.
+
 Most of the tools are in python so you will need it installed. You will also need node.js for `dmi2png-ts` and `object-fetcher` (since it requires `dmi2png-ts`).
+
 The `byond-hoster` tool requires an installation of BYOND.
+
 
 ## unused-files-finder
 This program indexes image and sound assets and then checks for mentions in the code, returning a list of orphaned files. It also lets you delete them automatically (altough you probably shouldn't)
