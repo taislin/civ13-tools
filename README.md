@@ -13,3 +13,6 @@ Grab civ13's DMI assets and convert them to png/json using the `unused-files-fin
 
 # byond-hoster
 This makes it possible for people to use BYOND to connect to civ13's TypeSpess though DreamDaemon. The server will appear on the Hub too.
+
+# recipe-converter
+Converts the `material_recipes.txt` file into .crafting CSON files that can be read by Typespess.
