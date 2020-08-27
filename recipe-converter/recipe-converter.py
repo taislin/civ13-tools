@@ -24,6 +24,7 @@ def parse_line(line, line_parsed):
 		CSONstring += '	age3: {}\n'.format(line_parsed[10])
 		CSONstring += '	last_age: {}\n'.format(line_parsed[11])
 		CSONstring += "	material: {}\n".format(otype)
+		CSONstring += '	opath: "{}"\n'.format(line_parsed[0])
 		CSONstring += "END: true\n"
 		return CSONstring
 

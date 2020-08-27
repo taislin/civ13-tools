@@ -22,3 +22,6 @@ This makes it possible for people to use BYOND to connect to civ13's TypeSpess t
 
 ## [recipe-converter](https://github.com/Civ13/civ13-tools/tree/master/recipe-converter)
 Converts the `material_recipes.txt` file into .crafting CSON files that can be read by Typespess.
+
+## [recipe-consolidator](https://github.com/Civ13/civ13-tools/tree/master/recipe-consolidator)
+Runs both `object-fetcher` and `recipe-converter`, then checks which objects listed in the .crafting files have been created in the `object-fetcher`'s .atom files. Then it removes the ones that are orphaned (no template exists).
