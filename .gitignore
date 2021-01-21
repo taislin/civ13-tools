@@ -103,11 +103,13 @@ dist
 # TernJS port file
 .tern-port
 
-*.dmi
-*.png
-*.json
-*.dump.txt
+dmi2png-ts/in/*.dmi
+dmi2png-ts/out/*.png
+dmi2png-ts/out/*.dump.txt
+dmi2png-ts/out/*.json
 Windows PowerShell.lnk
 *.atom
 *.txt
 *.crafting
+
+.vscode/
