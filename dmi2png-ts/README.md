@@ -1,5 +1,5 @@
 # dmi2png-ts
-Convert BYOND dmi's into a png and a json file with the metadata.
+Convert BYOND dmi's into a png and file.
 
 ## installing
 You will need to have Node.Js and python in order to run the program.

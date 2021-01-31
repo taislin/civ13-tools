@@ -92,7 +92,7 @@ function ConvertProc (file: string) {
 		filepng = filepng.replace("png","dmi");
 		var finaltext : string = JSON.stringify(toexport, null, 2);
 		finaltext = finaltext.replace(/\\"/g, "");
-		fs.writeFile(`${filene}.json`, finaltext, (err: any) => {if (err) throw err;})
+//		fs.writeFile(`${filene}.json`, finaltext, (err: any) => {if (err) throw err;})
 		fs.copyFile(filepng, `${filene}`, (err: any) => {if (err) throw err;});
 		console.log("Finished converting "+file);
 	}

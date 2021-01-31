@@ -2,7 +2,6 @@ import os
 import sys
 
 masterdir = os.path.normpath(os.getcwd() + os.sep + os.pardir).replace("\\","/")
-dmi2pngdir = masterdir+"/dmi2png-ts/"
 currdir = os.getcwd()
 path = ''
 
@@ -13,8 +12,8 @@ file.close()
 
 if (__name__ == "__main__"):
 	print("Listing files...")
-	with open("imglist.txt", "w") as writing:
-		with open("jslist.txt", "w") as writing2:
+	with open("imglist.txt", "w", encoding="utf-8") as writing:
+		with open("jslist.txt", "w", encoding="utf-8") as writing2:
 			for root, dirs, files in os.walk(path): # checks all files and folders in the base folder
 				for file in files:
 					filesp = file.replace("\n","") # removes the paragraph at the end of the string
@@ -23,7 +22,19 @@ if (__name__ == "__main__"):
 						filesp = str(root)+"\\"+str(file) # get the absolute directory
 						if filesp.find("node_modules") == -1: #exclude the dependency folders
 							filesp = file.split("\\") # if it has one of the extensions, split it so we get the filename without dirs
-							writing.write(str(root)+"\\"+filesp[len(filesp)-1]+"\n") # return the last value of the splitted array and write to the file
+							final_path = filesp[len(filesp)-1]
+							if(file.endswith(".png") or file.endswith(".gif") or file.endswith(".jpg")):
+								final_path = final_path.replace(".png","")
+								final_path = final_path.replace(".gif","")
+								final_path = final_path.replace(".jpg","")
+								final_path = final_path.replace("-dir1","")
+								final_path = final_path.replace("-dir2","")
+								final_path = final_path.replace("-dir3","")
+								final_path = final_path.replace("-dir4","")
+								final_path = "icon_state = \""+final_path+"\""+"\n"
+							else:
+								final_path = final_path+"\n"
+							writing.write(final_path) # return the last value of the splitted array and write to the file
 					#moving on to the code file listing...
 					elif(file.endswith(".js") or file.endswith(".ts") or file.endswith(".coffee") or file.endswith(".atom")): #search code files
 						filesp = str(root)+"\\"+str(file) # get the absolute directory
